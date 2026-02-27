@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About — MallowMals</title>
+
+    <!-- model-viewer for AR -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
     <style>
         :root {
             --1-color: #fff2d8;
             --7-color: #f2e9d4;
-            --8-color: #e17db0;
+            --8-color: #dbaec5;
             --2-color: #fccdd3;
             --3-color: #fca2cf;
             --4-color: #d8f4f6;
@@ -34,7 +38,7 @@
 
         .a2 {
             text-decoration: none;
-            color: #ee91bf;
+            color: #d5428c;
             transition: color 0.3s ease, font-size 0.3s ease;
             cursor: pointer;
         }
@@ -84,6 +88,22 @@
             display: none;
         }
 
+        /* model-viewer AR component */
+        .ar-viewer {
+            width: 280px;
+            height: 280px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
         .toggle-btn {
             font-family: 'Andale Mono', monospace;
             background-color: var(--5-color);
@@ -93,12 +113,28 @@
             border-radius: 20px;
             cursor: pointer;
             font-size: 12px;
-            margin-top: 10px;
             transition: background-color 0.2s;
         }
 
         .toggle-btn:hover {
             background-color: var(--4-color);
+        }
+
+        .ar-btn {
+            font-family: 'Andale Mono', monospace;
+            background-color: var(--2-color);
+            color: var(--6-color);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.2s;
+            display: none;
+        }
+
+        .ar-btn:hover {
+            background-color: var(--3-color);
         }
 
         footer {
@@ -121,6 +157,17 @@
             font-size: 9.5px;
         }
 
+        .back-link {
+            font-size: 13px;
+            color: var(--8-color);
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        .back-link:hover {
+            color: var(--3-color);
+        }
+
         .icon {
             position: absolute;
             font-size: 30px;
@@ -136,17 +183,6 @@
             0% { transform: translateY(0) scale(1); opacity: 1; }
             100% { transform: translateY(500px) scale(0.5); opacity: 0; }
         }
-
-        .back-link {
-            font-size: 13px;
-            color: var(--8-color);
-            text-decoration: none;
-            margin-bottom: 10px;
-        }
-
-        .back-link:hover {
-            color: var(--3-color);
-        }
     </style>
 </head>
 <body>
@@ -156,56 +192,136 @@
     </h1>
     <a href="index.html" class="back-link">← back to quiz</a>
 
-        <div class="characters-grid">
+    <div class="characters-grid">
 
         <!-- Puffs -->
         <div class="character-card" id="puffs">
             <img id="img-puffs" src="charactercards/puffs.png" alt="Puffs">
             <div id="model-puffs" class="model-viewer"></div>
-            <button class="toggle-btn" onclick="toggleView('puffs')">See in 3D</button>
+            <model-viewer id="ar-puffs" class="ar-viewer"
+                src="3dmodels/puffs.glb"
+                ar ar-modes="webxr scene-viewer quick-look"
+                ar-scale="fixed"
+                camera-controls auto-rotate
+                shadow-intensity="1"
+                environment-image="neutral"
+                exposure="1.0"
+                tone-mapping="commerce">
+            </model-viewer>
+            <div class="btn-group">
+                <button class="toggle-btn" onclick="toggleView('puffs')">See in 3D</button>
+                <button class="ar-btn" id="ar-btn-puffs" onclick="openAR('puffs')">📱 View in AR</button>
+            </div>
         </div>
 
         <!-- Nibs -->
         <div class="character-card" id="nibs">
             <img id="img-nibs" src="charactercards/nibs.png" alt="Nibs">
             <div id="model-nibs" class="model-viewer"></div>
-            <button class="toggle-btn" onclick="toggleView('nibs')">See in 3D</button>
+            <model-viewer id="ar-nibs" class="ar-viewer"
+                src="3dmodels/nibs.glb"
+                ar ar-modes="webxr scene-viewer quick-look"
+                ar-scale="fixed"
+                camera-controls auto-rotate
+                shadow-intensity="1"
+                environment-image="neutral"
+                exposure="1.0"
+                tone-mapping="commerce">
+            </model-viewer>
+            <div class="btn-group">
+                <button class="toggle-btn" onclick="toggleView('nibs')">See in 3D</button>
+                <button class="ar-btn" id="ar-btn-nibs" onclick="openAR('nibs')">📱 View in AR</button>
+            </div>
         </div>
 
         <!-- Crumbs -->
         <div class="character-card" id="crumbs">
             <img id="img-crumbs" src="charactercards/crumbs.png" alt="Crumbs">
             <div id="model-crumbs" class="model-viewer"></div>
-            <button class="toggle-btn" onclick="toggleView('crumbs')">See in 3D</button>
+            <model-viewer id="ar-crumbs" class="ar-viewer"
+                src="3dmodels/crumbs.glb"
+                ar ar-modes="webxr scene-viewer quick-look"
+                ar-scale="fixed"
+                camera-controls auto-rotate
+                shadow-intensity="1"
+                environment-image="neutral"
+                exposure="1.0"
+                tone-mapping="commerce">
+            </model-viewer>
+            <div class="btn-group">
+                <button class="toggle-btn" onclick="toggleView('crumbs')">See in 3D</button>
+                <button class="ar-btn" id="ar-btn-crumbs" onclick="openAR('crumbs')">📱 View in AR</button>
+            </div>
         </div>
 
         <!-- Bits -->
         <div class="character-card" id="bits">
             <img id="img-bits" src="charactercards/bits.png" alt="Bits">
             <div id="model-bits" class="model-viewer"></div>
-            <button class="toggle-btn" onclick="toggleView('bits')">See in 3D</button>
+            <model-viewer id="ar-bits" class="ar-viewer"
+                src="3dmodels/bits.glb"
+                ar ar-modes="webxr scene-viewer quick-look"
+                ar-scale="fixed"
+                camera-controls auto-rotate
+                shadow-intensity="1"
+                environment-image="neutral"
+                exposure="1.0"
+                tone-mapping="commerce">
+            </model-viewer>
+            <div class="btn-group">
+                <button class="toggle-btn" onclick="toggleView('bits')">See in 3D</button>
+                <button class="ar-btn" id="ar-btn-bits" onclick="openAR('bits')">📱 View in AR</button>
+            </div>
         </div>
 
         <!-- Flakes -->
         <div class="character-card" id="flakes">
             <img id="img-flakes" src="charactercards/flakes.png" alt="Flakes">
             <div id="model-flakes" class="model-viewer"></div>
-            <button class="toggle-btn" onclick="toggleView('flakes')">See in 3D</button>
+            <model-viewer id="ar-flakes" class="ar-viewer"
+                src="3dmodels/flakes.glb"
+                ar ar-modes="webxr scene-viewer quick-look"
+                ar-scale="fixed"
+                camera-controls auto-rotate
+                shadow-intensity="1"
+                environment-image="neutral"
+                exposure="1.0"
+                tone-mapping="commerce">
+            </model-viewer>
+            <div class="btn-group">
+                <button class="toggle-btn" onclick="toggleView('flakes')">See in 3D</button>
+                <button class="ar-btn" id="ar-btn-flakes" onclick="openAR('flakes')">📱 View in AR</button>
+            </div>
         </div>
 
         <!-- Pebbles -->
         <div class="character-card" id="pebbles">
             <img id="img-pebbles" src="charactercards/pebbles.png" alt="Pebbles">
             <div id="model-pebbles" class="model-viewer"></div>
-            <button class="toggle-btn" onclick="toggleView('pebbles')">See in 3D</button>
+            <model-viewer id="ar-pebbles" class="ar-viewer"
+                src="3dmodels/pebbles.glb"
+                ar ar-modes="webxr scene-viewer quick-look"
+                ar-scale="fixed"
+                camera-controls auto-rotate
+                shadow-intensity="1"
+                environment-image="neutral"
+                exposure="1.0"
+                tone-mapping="commerce">
+            </model-viewer>
+            <div class="btn-group">
+                <button class="toggle-btn" onclick="toggleView('pebbles')">See in 3D</button>
+                <button class="ar-btn" id="ar-btn-pebbles" onclick="openAR('pebbles')">📱 View in AR</button>
+            </div>
         </div>
 
     </div>
 
     <footer>
-        <p2>VIS 143B - Angela Le</p2><br>
+        <p2>all artwork is copyrighted, please don't use it without permission</p2><br>
+        <a href="https://iseej.github.io/Card/" target="_blank" style="font-size: 10px;">&copy; 2025 I-see Warisa Jaidee</a>
     </footer>
 
+    <!-- Three.js for the 3D viewer on page -->
     <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
     <script type="importmap">
     {
@@ -222,10 +338,6 @@
         import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
         const loader = new GLTFLoader();
-
-        const characters = ['crumbs', 'bits', 'puffs', 'flakes', 'nibs', 'pebbles'];
-
-        // Track state per character
         const viewers = {};
 
         function initViewer(name) {
@@ -239,16 +351,23 @@
             const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
             renderer.setSize(container.clientWidth, container.clientHeight);
             renderer.setPixelRatio(window.devicePixelRatio);
+            // Match model-viewer tone mapping so textures look the same
+            renderer.toneMapping = THREE.ACESFilmicToneMapping;
+            renderer.toneMappingExposure = 1.0;
             container.appendChild(renderer.domElement);
 
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+            const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
             scene.add(ambientLight);
-            const dirLight1 = new THREE.DirectionalLight(0xffffff, 0.5);
+            const dirLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
             dirLight1.position.set(5, 5, 5);
             scene.add(dirLight1);
-            const dirLight2 = new THREE.DirectionalLight(0xffffff, 0.3);
+            const dirLight2 = new THREE.DirectionalLight(0xffffff, 0.4);
             dirLight2.position.set(-5, -5, -5);
             scene.add(dirLight2);
+            // Extra fill light from below
+            const dirLight3 = new THREE.DirectionalLight(0xffffff, 0.3);
+            dirLight3.position.set(0, -5, 0);
+            scene.add(dirLight3);
 
             const controls = new OrbitControls(camera, renderer.domElement);
             controls.enableDamping = true;
@@ -264,11 +383,24 @@
             }
             animate();
 
-            // Load model
             loader.load(
                 '3dmodels/' + name + '.glb',
                 function (gltf) {
                     const model = gltf.scene;
+
+                    // Fix grey textures: make sure materials render properly
+                    model.traverse((child) => {
+                        if (child.isMesh && child.material) {
+                            child.material.needsUpdate = true;
+                            // If material has no map (texture), keep its color
+                            if (child.material.metalness !== undefined) {
+                                // Reduce metalness to prevent grey look without env map
+                                child.material.metalness = Math.min(child.material.metalness, 0.3);
+                                child.material.roughness = Math.max(child.material.roughness, 0.5);
+                            }
+                        }
+                    });
+
                     const box = new THREE.Box3().setFromObject(model);
                     const center = box.getCenter(new THREE.Vector3());
                     const size = box.getSize(new THREE.Vector3());
@@ -290,20 +422,29 @@
         window.toggleView = function(name) {
             const img = document.getElementById('img-' + name);
             const model = document.getElementById('model-' + name);
-            const btn = img.parentElement.querySelector('.toggle-btn');
+            const arViewer = document.getElementById('ar-' + name);
+            const card = img.closest('.character-card');
+            const toggleBtn = card.querySelector('.toggle-btn');
+            const arBtn = document.getElementById('ar-btn-' + name);
 
-            if (!img || !model || !btn) return;
+            if (!img || !model || !toggleBtn) return;
 
             const showing3D = model.style.display !== 'none';
 
             if (showing3D) {
+                // Switch back to 2D
                 model.style.display = 'none';
+                arViewer.style.display = 'none';
                 img.style.display = 'block';
-                btn.textContent = 'See in 3D';
+                toggleBtn.textContent = 'See in 3D';
+                arBtn.style.display = 'none';
             } else {
+                // Switch to 3D
                 img.style.display = 'none';
+                arViewer.style.display = 'none';
                 model.style.display = 'block';
-                btn.textContent = 'See as image';
+                toggleBtn.textContent = 'See as image';
+                arBtn.style.display = 'inline-block';
 
                 if (!viewers[name]) {
                     setTimeout(() => initViewer(name), 100);
@@ -311,18 +452,34 @@
             }
         };
 
-        // Auto-scroll to character if URL has a hash (e.g., #nibs)
+        window.openAR = function(name) {
+            const img = document.getElementById('img-' + name);
+            const model = document.getElementById('model-' + name);
+            const arViewer = document.getElementById('ar-' + name);
+
+            // Hide Three.js viewer, show model-viewer for AR
+            model.style.display = 'none';
+            img.style.display = 'none';
+            arViewer.style.display = 'block';
+
+            // Wait for model-viewer to be ready, then activate AR
+            setTimeout(() => {
+                if (arViewer.activateAR) {
+                    arViewer.activateAR();
+                }
+            }, 500);
+        };
+
+        // Auto-scroll to character if URL has a hash
         window.addEventListener('load', () => {
             const hash = window.location.hash.replace('#', '');
             if (hash) {
                 const card = document.getElementById(hash);
                 if (card) {
-                    // Smooth scroll to the character
                     setTimeout(() => {
                         card.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }, 300);
 
-                    // Highlight the card briefly
                     card.style.transition = 'box-shadow 0.5s ease';
                     card.style.boxShadow = '0 0 20px rgba(252, 162, 207, 0.8)';
                     setTimeout(() => {
