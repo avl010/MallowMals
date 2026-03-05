@@ -19,7 +19,7 @@ Your choices map to one of six characters, each representing a different persona
 ## Files
 - `index.html` — main UI and markup
 - `script.js` — quiz logic, scoring, UI behaviors
-- `IMG/` — artwork and result images (keep filenames referenced in `script.js`)
+- `IMG/`, `3dmodels/`, `characterscards` — artwork and result images
 - audio files (`vibe.mp3`, `ding.mp3`, `pop.mp3`) — UI sounds
 
 ## Credits
@@ -29,4 +29,4 @@ Your choices map to one of six characters, each representing a different persona
   - **Three.js** (v0.160.0, ES modules) — 3D model rendering and interaction (GLB format)
   - [es-module-shims](https://github.com/guybedford/es-module-shims) — import map polyfill
 - Tools:
-  - GitHub Copilot — assisted during development for code editing. Copilot helped suggest improvements and perform repetitive edits but final code decisions and testing were made by me.
+  - GitHub Copilot — assisted during development for code editing. Copilot helped suggest improvements and perform repetitive edits but final code decisions and testing were done by me.
