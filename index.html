@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MallowMals Personality Quiz</title>
-    <link rel="icon" type="image/x-icon" href="IMG/icon.PNG">
+    <link rel="icon" type="image/x-icon" href="IMG/chat.PNG">
     
 </head>
 
@@ -301,6 +301,20 @@
         margin-bottom: 20px;
     }
 
+    #result-breakdown ul {
+        margin: 8px 0 0;
+        padding-left: 1.2rem;
+    }
+
+    #result-breakdown li {
+        margin-bottom: 12px;
+        line-height: 1.4;
+    }
+
+    #result-breakdown li:last-child {
+        margin-bottom: 0;
+    }
+
     .a2 {
         /*font-size: 9px;*/
         text-decoration: none;
@@ -497,6 +511,7 @@
                 href="https://www.cake.me/campaigns/what-cake-r-u">CakeResume</a>.
         </p2>
         <p2>Code adapted from I-see Jaidee @izonfalzo and modified by me.</p2>
+        <p2>Background music by <a href="https://www.youtube.com/watch?v=X_iSipLXcg0&list=PLErvsG8TfDJu3d6DvwC7YcaJ99AiDO8Vp&index=23">Daystar</a></p2>
     </div>
 
 
@@ -537,6 +552,10 @@
         <!-- 3D Model Container (hidden by default) -->
                 <div id="model-container" class="model-container" style="display: none; width: 300px; height: 300px; min-width: 300px; min-height: 300px;"></div>
 
+        <!-- breakdown of result -->
+        <div id="result-breakdown" class="result-text" style="max-width: 340px; margin-top: 10px;">
+        </div>
+
         <div class="button-group" style="flex-direction: column; align-items: center;">
             <!-- 3D Toggle Button -->
             <button id="toggle-3d-button" class="restart-button" onclick="toggle3DView()">see character in 3D</button>
@@ -560,9 +579,10 @@
         <p2>VIS 143B - Angela Le</p2><br>
     </footer>
 
-    <audio id="notifSound" src="vibe.mp3"></audio>
-    <audio id="dingSound" src="ding.mp3"></audio>
-    <audio id="popSound" src="pop.mp3"></audio>
+    <audio id="notifSound" src="sound/bling.mp3"></audio>
+    <audio id="dingSound" src="sound/ding.mp3"></audio>
+    <audio id="popSound" src="sound/pop.mp3"></audio>
+    <audio id="bgMusic" src="sound/daystar-fluffy.mp3" loop preload="auto"></audio>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
     <script type="importmap">
@@ -577,7 +597,4 @@
 
 
 </body>
-
-
-
 </html>
