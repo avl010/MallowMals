@@ -336,7 +336,8 @@ const dialogue = [
     {
         speaker: "bot",
         text: [
-            "Q6) you open your laptop and realize you don’t have access to the software you need for your project anymore. what now?"
+            "Q6) you open your laptop and realize you don’t have access to the software you need for your project anymore.",
+            "what now?"
         ],
         choices: [
             { id: 1, text: "take it as a sign and deal with it later.", type: "bits", weight: 2, next: 14, followUpText: [] },
@@ -360,11 +361,12 @@ const dialogue = [
     {
         speaker: "bot",
         text: [
-            "Q8) it's critique day. someone else is presenting. what role do u naturally take in the room?"
+            "Q8) it's critique day and someone else is presenting.",
+            "what role do u naturally take in the room?"
         ],
         choices: [
             { id: 1, text: "say one positive thing and ask simple questions.", type: "puffs", weight: 2, next: 16, followUpText: [] },
-            { id: 2, text: "ask concept questions like “what’s the intent / system here?” and try to connect it to bigger ideas.", type: "nibs", weight: 2, next: 16, followUpText: [] },
+            { id: 2, text: "ask conceptual questions like “what’s the intent / system here?” and try to connect it to bigger ideas.", type: "nibs", weight: 2, next: 16, followUpText: [] },
             { id: 3, text: "give practical feedback like “try X / change Y” so they have next steps.", type: "flakes", weight: 2, next: 16, followUpText: [] },
             { id: 4, text: "mostly listen and take it in. i don’t talk much during crit.", type: "pebbles", weight: 2, next: 16, followUpText: [] }
         ]
@@ -409,7 +411,8 @@ const dialogue = [
         speaker: "bot",
         text: [
             "Q12) last one i promise:",
-            "it’s the day of ur final presentation and your project suddenly isn’t working the way it did last night. what do u do?"
+            "it’s the day of ur final presentation and your project suddenly isn’t working the way it did last night.",
+            "what do u do?"
         ],
         choices: [
             { id: 1, text: "ask a classmate or the prof for help.", type: "puffs", weight: 2, next: 20, followUpText: [] },
@@ -835,6 +838,7 @@ function triggerIconShower(event) {
 
 startConversation();
 
+// ========== EXPOSE FUNCTIONS TO GLOBAL SCOPE FOR HTML ONCLICK ==========
 window.toggle3DView = toggle3DView;
 window.tapBlindBox = tapBlindBox;
 window.revealResult = revealResult;
